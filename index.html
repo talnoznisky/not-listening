@@ -1,0 +1,38 @@
+<html>
+
+<style>
+    .goodbye {
+        display: flex;
+        align-items: flex-start;
+    }
+</style>
+
+<body>
+    <container>
+        <div class='goodbye'>
+            <div class = 'letter'>g</div>
+            <div class = 'letter'>o</div>
+            <div class = 'letter'>o</div>
+            <div class = 'letter'>d</div>
+            <div class = 'letter'>b</div>
+        </div>
+    </container>
+</body>
+
+<script>
+lettersToAdd = 'yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyye'
+for(let i = 0; i < lettersToAdd.length; i++){
+    const newLetter = document.createElement('div')
+    newLetter.classList.add('letter')
+
+    goodbye = document.querySelector('.goodbye')
+    goodbye.append(newLetter.innerText = lettersToAdd.charAt(i))
+}
+ 
+
+
+
+</script>
+
+
+</html>
