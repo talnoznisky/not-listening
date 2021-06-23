@@ -1,38 +1,74 @@
 <html>
-
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
 <style>
+    html, a {
+        background-color:lightseagreen;
+        font-size: large;
+        color:floralwhite;
+    }
+
+    footer{
+        width: 100%;
+        bottom: 0;
+        padding: 4px;
+        position: fixed;
+    }
+
     .goodbye {
         display: flex;
         align-items: flex-start;
+        inline-size: 100%;
+        word-break: break-all;
     }
 </style>
 
 <body>
     <container>
-        <div class='goodbye'>
-            <div class = 'letter'>g</div>
-            <div class = 'letter'>o</div>
-            <div class = 'letter'>o</div>
-            <div class = 'letter'>d</div>
-            <div class = 'letter'>b</div>
-        </div>
+        <div>🙉 not listening when you say:</div>
+        <div class='goodbye'></div>
+        <footer><a href='https://talnoznisky.com/'>doot doot doot</a> ;)</footer>
+
     </container>
+
+
 </body>
-
 <script>
-lettersToAdd = 'yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyye'
-for(let i = 0; i < lettersToAdd.length; i++){
-    const newLetter = document.createElement('div')
-    newLetter.classList.add('letter')
+    const goodb = '👋 goodb'
+    const ends = ['yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyye',
+                  'yyyyyyyyyyyyyyyyyyyyyy-yyyyyyyyyyyyyyyyyyyyyyyyyy-yyyyyyyyyyyyyyyyyyyyyyyye',
+                  'yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyye'] 
+    
+    function sleep(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+    }
 
-    goodbye = document.querySelector('.goodbye')
-    goodbye.append(newLetter.innerText = lettersToAdd.charAt(i))
-}
- 
+    async function writeNewChar(end){
+        const container = document.getElementsByTagName('container')[0]
+        let goodbye = document.createElement('div')
+        goodbye.classList.add('goodbye')
+        goodbye.innerText = goodb
+        container.append(goodbye)
 
+        goodbye = document.getElementsByClassName('goodbye')
+        goodbye = goodbye.item(goodbye.length - 1)
+        
+        for (let i = 0; i < end.length; i++){
+            newLetter = end.charAt(i)
+            goodbye.innerText += newLetter
+            await sleep(50)
+        }
+    }
 
-
-</script>
-
-
+(async function(){
+    for (end in ends){
+        await sleep(300)
+        await writeNewChar(ends[end])   
+    }
+}());
+    
+     
+    </script>     
 </html>
